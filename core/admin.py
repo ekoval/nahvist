@@ -1,10 +1,10 @@
 from django.contrib import admin
 from core.models import Event, JoinRequest
 
-class EventAdmin(admin.ModelAdmin):
+class TripAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Event, EventAdmin)
+admin.site.register(Trip, TripAdmin)
 
 
 class JoinRequestAdmin(admin.ModelAdmin):

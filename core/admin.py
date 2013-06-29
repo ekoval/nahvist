@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Event, JoinRequest
+from core.models import Trip, JoinRequest
 
 class TripAdmin(admin.ModelAdmin):
     pass

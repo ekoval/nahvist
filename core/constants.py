@@ -1,8 +1,8 @@
 TRIP_STATE_PLANNED = 'planned'
 TRIP_STATE_CANCELLED = 'cancelled'
 TRIP_STATE_FINISHED = 'finished'
-TRIP_STATES = zip((EVENT_STATE_OPENED, EVENT_STATE_CANCELLED, EVENT_STATE_CLOSED),
-                  ('Open', 'Cancelled', 'Closed'))
+TRIP_STATES = zip((TRIP_STATE_PLANNED, TRIP_STATE_CANCELLED, TRIP_STATE_FINISHED),
+                  ('Planned', 'Cancelled', 'Finished'))
 
 
 

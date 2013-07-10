@@ -149,3 +149,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_REDIRECT_URL = '/accounts/login/'

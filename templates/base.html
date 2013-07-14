@@ -57,12 +57,12 @@
               {% csrf_token %}
               <input type="text" name="username" class="span2" placeholder="Login">
               <input type="password" name="password" class="span2" placeholder="Password">
-            <input type="submit" value="Login" class="btn" style="vertical-align: top;"/>
+            <input type="submit" value="Login" class="btn btn-primary" style="vertical-align: top;"/>
           </form>
         {% else %}
           <ul class="nav nav-tabs pull-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}<b class="caret"></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.first_name }} {{ user.last_name }}<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a></li>
             </ul>

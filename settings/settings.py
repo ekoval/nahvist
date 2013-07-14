@@ -150,4 +150,4 @@ LOGGING = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'

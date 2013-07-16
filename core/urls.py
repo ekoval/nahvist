@@ -6,11 +6,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^/new_trip/$', 'nahvist.core.views.new_trip', name='new_trip'),
-    url(r'^/find_trip/$', 'nahvist.core.views.find_trip', name='find_trip'),
-    url(r'^/my_trips/$', 'nahvist.core.views.my_trips', name='my_trips'),
-    url(r'^/new_requests/$', 'nahvist.core.views.my_requests', name='my_requests'),
-    url(r'^//$', 'nahvist.core.views.new_trip', name='new_trip'),
+    url(r'^/new/$', 'nahvist.core.views.new_trip', name='new_trip'),
+    url(r'^/find/$', 'nahvist.core.views.find_trip', name='find_trip'),
+    url(r'^/my/$', 'nahvist.core.views.my_trips', name='my_trips'),
+    url(r'^/requests/$', 'nahvist.core.views.my_requests', name='my_requests'),
 
     # url(r'^nahvist/', include('nahvist.foo.urls')),
 

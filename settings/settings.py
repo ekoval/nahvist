@@ -75,6 +75,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     '%s/static/' %os.getcwd(),
+    '%s/core/static/' %os.getcwd(),
 )
 
 # List of finder classes that know how to find static files in
@@ -110,6 +111,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     '%s/templates' %os.getcwd(),
+    '%s/core/templates' %os.getcwd(),
 )
 
 INSTALLED_APPS = (
@@ -150,4 +152,4 @@ LOGGING = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/ '

@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import logout
+from core.forms import TripForm
 
 
 def about_project(request):
@@ -10,9 +11,12 @@ def about_project(request):
 
 
 def new_trip(request):
-    ctx = RequestContext(request, {})
-    return render_to_response('about.html', ctx)
+    if request.method == 'POST':
+        form = TripForm(request.POST)
+    else:
+        form = TripForm()
 
+    return render_to_response('trip.html', {'form': form})
 
 def find_trip(request):
     ctx = RequestContext(request, {})

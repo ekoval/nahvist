@@ -1,0 +1,25 @@
+{% if form.non_field_errors %}
+<div class="alert-message error">
+{{ form.non_field_errors|join:". "}}
+</div>
+{% endif %}
+{% for field in form %}
+  <div class="control-group {%if field.errors %}error{%endif%}">
+    <label class="control-label">{{ field.label_tag }}</label>
+    {{ field }}
+    {% if field.errors %}
+        <div class="help-inline">
+          {{ field.errors|join:". " }}
+        </div>
+    {% endif %}
+    {% if field.help_text %}
+      <div class="help-block">
+        {% autoescape off %}
+        {{ field.help_text }}
+        {% endautoescape %}
+      </div>
+    {% endif %}
+  </div>
+
+{% endfor %}
+

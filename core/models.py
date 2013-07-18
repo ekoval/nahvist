@@ -16,8 +16,6 @@ class Trip(models.Model):
     host_role = models.CharField(max_length=10, choices=ROLES)
     destination = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
-    car = models.ForeignKey(Car)
-    created = models.DateTimeField()
     state = models.CharField(max_length=10, choices=TRIP_STATES)
     vacant_seats_number = models.IntegerField()
     passengers_number = models.IntegerField()

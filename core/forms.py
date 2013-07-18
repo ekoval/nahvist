@@ -12,3 +12,8 @@ class UserRegistrationForm(RegistrationFormUniqueEmail):
 class TripForm(ModelForm):
     class Meta:
         model = Trip
+        fields = ['host_role', 'destination', 'description', 'vacant_seats_number', 'passengers_number']
+
+    def __init__(self, *args, **kwargs):
+        self._user = kwargs.pop('user')
+        super(TripForm, self).__init__(*args, **kwargs)

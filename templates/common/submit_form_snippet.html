@@ -6,7 +6,7 @@
 {% endif %}
 {% for field in form %}
   <div class="control-group {%if field.errors %}error{%endif%}">
-    <label class="control-label">{{ field.label_tag }}</label>
+    <label class="control-label">{{ field.label }}:</label>
     {{ field }}
     {% if field.errors %}
         <div class="help-inline">
@@ -20,6 +20,7 @@
         {% endautoescape %}
       </div>
     {% endif %}
+
   </div>
 
 {% endfor %}

@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from core.models import Trip
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
+from core.constants import ROLES
 
 
 class UserRegistrationForm(RegistrationFormUniqueEmail):
@@ -12,7 +13,10 @@ class UserRegistrationForm(RegistrationFormUniqueEmail):
 class TripForm(ModelForm):
     class Meta:
         model = Trip
-        fields = ['host_role', 'destination', 'description', 'vacant_seats_number', 'passengers_number']
+        fields = ['host_role', 'destination', 'start', 'description']
+        widgets = {
+            'description': forms.Textarea(attrs={'cols': 20, 'rows': 2}),
+        }
 
     def __init__(self, *args, **kwargs):
         self._user = kwargs.pop('user')

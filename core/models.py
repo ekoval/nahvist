@@ -17,8 +17,9 @@ class Trip(models.Model):
     destination = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     state = models.CharField(max_length=10, choices=TRIP_STATES)
-    vacant_seats_number = models.IntegerField()
-    passengers_number = models.IntegerField()
+    start = models.DateTimeField()
+#    vacant_seats_number = models.IntegerField()
+#    passengers_number = models.IntegerField()
 
 
 class JoinRequest(models.Model):

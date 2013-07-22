@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from core.forms import TripForm
 from django.contrib.auth.decorators import login_required
 from core.models import Trip
+from core import constants
 
 
 def about_project(request):
@@ -18,6 +19,8 @@ def new_trip(request):
         form = TripForm(request.POST, user=request.user)
         if form.is_valid():
             form.instance.host = request.user
+            if not form.instance.id:
+                form.instance.state = constants.TRIP_STATE_PLANNED
             form.save()
 
     else:
@@ -27,13 +30,15 @@ def new_trip(request):
     return render_to_response('trip.html', ctx)
 
 def find_trip(request):
-    ctx = RequestContext(request, {})
-    return render_to_response('about.html', ctx)
+    trips = Trip.objects.exclude(host=request.user)
+    ctx = RequestContext(request, {'trips': trips})
+    return render_to_response('find_trip.html', ctx)
 
 
 def my_trips(request):
-    ctx = RequestContext(request, {})
-    return render_to_response('about.html', ctx)
+    organized_by_myself = Trip.objects.filter(host=request.user)
+    ctx = RequestContext(request, {'organized_by_myself': organized_by_myself})
+    return render_to_response('my_trips.html', ctx)
 
 
 def my_requests(request):

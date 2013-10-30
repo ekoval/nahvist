@@ -1,6 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from core.constants import TRIP_STATES, REQUEST_STATES, ROLES
+
+
+class User(AbstractUser):
+    fb_profile = models.URLField()
 
 
 class Car(models.Model):
@@ -10,24 +14,50 @@ class Car(models.Model):
     passenger_seats = models.IntegerField()
 
 
-class Trip(models.Model):
+class DriverTrip(models.Model):
     """Describes trip."""
-    host = models.ForeignKey(User)
-    host_role = models.CharField(max_length=10, choices=ROLES)
-    destination = models.CharField(max_length=100)
+    user = models.ForeignKey(User)
+    move_from = models.CharField(max_length=100)
+    move_to = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     state = models.CharField(max_length=10, choices=TRIP_STATES)
-    start = models.DateTimeField()
-#    vacant_seats_number = models.IntegerField()
-#    passengers_number = models.IntegerField()
+    start_date = models.DateField()
+    start_time = models.TimeField()
+    seats_number = models.IntegerField()
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()
 
 
-class JoinRequest(models.Model):
+class PassengerTrip(models.Model):
+    """Describes trip."""
+    user = models.ForeignKey(User)
+    move_from = models.CharField(max_length=100)
+    move_to = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    state = models.CharField(max_length=10, choices=TRIP_STATES)
+    start_date = models.DateField()
+    start_time = models.TimeField()
+    number_of_people = models.IntegerField()
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()
+
+
+class JoinDriverRequest(models.Model):
     """Request is created when somebody wants to join some trip."""
     user = models.ForeignKey(User)
-    trip = models.ForeignKey(Trip)
-    role = models.CharField(max_length=10, choices=ROLES)
+    trip = models.ForeignKey(DriverTrip)
     state = models.CharField(max_length=10, choices=REQUEST_STATES)
-    created = models.DateTimeField()
-    state_changed = models.DateTimeField()
+    message = models.TextField()
     number_of_people = models.IntegerField()
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()
+
+
+class TakePassengerRequest(models.Model):
+    """Request is created when somebody wants to join some trip."""
+    user = models.ForeignKey(User)
+    trip = models.ForeignKey(DriverTrip)
+    state = models.CharField(max_length=10, choices=REQUEST_STATES)
+    message = models.TextField()
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()

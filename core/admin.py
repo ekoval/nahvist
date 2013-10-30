@@ -1,13 +1,7 @@
 from django.contrib import admin
-from core.models import Trip, JoinRequest
+from core.models import User, DriverTrip, PassengerTrip, JoinDriverRequest
 
-class TripAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Trip, TripAdmin)
-
-
-class JoinRequestAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(JoinRequest, JoinRequestAdmin)
+admin.site.register(User)
+admin.site.register(DriverTrip)
+admin.site.register(PassengerTrip)
+admin.site.register(JoinDriverRequest)

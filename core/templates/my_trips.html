@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Host</th>
+            <th>Destination</th>
+            <th>Start</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for trip in organized_by_myself %}
+        <tr>
+            <td>{{ trip.host }}</td>
+            <td>{{ trip.destination }}</td>
+            <td>{{ trip.start }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

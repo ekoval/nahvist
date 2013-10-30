@@ -19,5 +19,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/register/$', RegistrationView.as_view(form_class=UserRegistrationForm), name='registration_register'),
     url(r'^accounts/', include('registration.urls')),
+    url(r'^facebook/', include('django_facebook.urls')),
 )
 

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from core.models import Trip
+from core.models import DriverTrip
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
 from core.constants import ROLES
@@ -12,8 +12,8 @@ class UserRegistrationForm(RegistrationFormUniqueEmail):
 
 class TripForm(ModelForm):
     class Meta:
-        model = Trip
-        fields = ['host_role', 'destination', 'start', 'description']
+        model = DriverTrip
+        fields = ['move_to', 'start_date', 'description']
         widgets = {
             'description': forms.Textarea(attrs={'cols': 20, 'rows': 2}),
         }
